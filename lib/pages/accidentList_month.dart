@@ -32,7 +32,7 @@ class _ListMonthState extends State<ListMonth> {
       appBar: AppBar(
         title: Text(
           'อุบัติเหตุบนทางพิเศษรายเดือน',
-          style: GoogleFonts.notoSans(fontWeight: FontWeight.bold),
+          style: GoogleFonts.mali(fontWeight: FontWeight.bold, fontSize: 16.0),
         ),
         backgroundColor: Color(0xFF1900b3),
         actions: <Widget>[
@@ -89,7 +89,7 @@ class _ListMonthState extends State<ListMonth> {
                             var select = [
                               '${_year}',
                               '${accidentList.month_no}',
-                              '${accidentList.month}'
+                              '${accidentList.month}',
                             ];
                             Navigator.pushNamed(
                               context,
@@ -114,7 +114,7 @@ class _ListMonthState extends State<ListMonth> {
                                 child: Center(
                                   child: Text(
                                     '${accidentList.month}',
-                                    style: GoogleFonts.notoSans(
+                                    style: GoogleFonts.mali(
                                       color: Colors.black87,
                                       fontSize: 28.0,
                                       fontWeight: FontWeight.bold,
@@ -134,7 +134,7 @@ class _ListMonthState extends State<ListMonth> {
                                         padding: const EdgeInsets.all(8.0),
                                         child: Text(
                                           'จำนวนอุบัติเหตุ',
-                                          style: GoogleFonts.notoSans(
+                                          style: GoogleFonts.mali(
                                             color: Colors.white70,
                                             fontSize: 18.0,
                                             fontWeight: FontWeight.bold,
@@ -145,7 +145,7 @@ class _ListMonthState extends State<ListMonth> {
                                         padding: const EdgeInsets.all(8.0),
                                         child: Text(
                                           '${accidentList.accident} ครั้ง',
-                                          style: GoogleFonts.notoSans(
+                                          style: GoogleFonts.mali(
                                             color: Colors.white70,
                                             fontSize: 18.0,
                                             fontWeight: FontWeight.bold,
@@ -172,7 +172,7 @@ class _ListMonthState extends State<ListMonth> {
                                           ),
                                           Text(
                                             'จำนวนผู้บาดเจ็บ',
-                                            style: GoogleFonts.notoSans(
+                                            style: GoogleFonts.mali(
                                               color: Colors.indigo.shade900,
                                               fontSize: 18.0,
                                               fontWeight: FontWeight.bold,
@@ -197,7 +197,7 @@ class _ListMonthState extends State<ListMonth> {
                                                   ),
                                                   Text(
                                                     'ผู้ชาย',
-                                                    style: GoogleFonts.notoSans(
+                                                    style: GoogleFonts.mali(
                                                       color: Colors.white70,
                                                       fontSize: 18.0,
                                                       fontWeight:
@@ -212,7 +212,7 @@ class _ListMonthState extends State<ListMonth> {
                                                   const EdgeInsets.all(8.0),
                                               child: Text(
                                                 '${accidentList.injur_man} ราย',
-                                                style: GoogleFonts.notoSans(
+                                                style: GoogleFonts.mali(
                                                   color: Colors.white70,
                                                   fontSize: 18.0,
                                                   fontWeight: FontWeight.bold,
@@ -239,7 +239,7 @@ class _ListMonthState extends State<ListMonth> {
                                                   ),
                                                   Text(
                                                     'ผู้หญิง',
-                                                    style: GoogleFonts.notoSans(
+                                                    style: GoogleFonts.mali(
                                                       color: Colors.white70,
                                                       fontSize: 18.0,
                                                       fontWeight:
@@ -254,7 +254,7 @@ class _ListMonthState extends State<ListMonth> {
                                                   const EdgeInsets.all(8.0),
                                               child: Text(
                                                 '${accidentList.injur_femel} ราย',
-                                                style: GoogleFonts.notoSans(
+                                                style: GoogleFonts.mali(
                                                   color: Colors.white70,
                                                   fontSize: 18.0,
                                                   fontWeight: FontWeight.bold,
@@ -280,7 +280,7 @@ class _ListMonthState extends State<ListMonth> {
                                       ),
                                       Text(
                                         'จำนวนผู้เสียชีวิต',
-                                        style: GoogleFonts.notoSans(
+                                        style: GoogleFonts.mali(
                                           color: Colors.yellow.shade700,
                                           fontSize: 18.0,
                                           fontWeight: FontWeight.bold,
@@ -303,7 +303,7 @@ class _ListMonthState extends State<ListMonth> {
                                                   ),
                                                   Text(
                                                     'ผู้ชาย',
-                                                    style: GoogleFonts.notoSans(
+                                                    style: GoogleFonts.mali(
                                                       color: Colors.white70,
                                                       fontSize: 18.0,
                                                       fontWeight:
@@ -318,7 +318,7 @@ class _ListMonthState extends State<ListMonth> {
                                                   const EdgeInsets.all(8.0),
                                               child: Text(
                                                 '${accidentList.dead_man} ราย',
-                                                style: GoogleFonts.notoSans(
+                                                style: GoogleFonts.mali(
                                                   color: Colors.white70,
                                                   fontSize: 18.0,
                                                   fontWeight: FontWeight.bold,
@@ -342,7 +342,7 @@ class _ListMonthState extends State<ListMonth> {
                                                 ),
                                                 Text(
                                                   'ผู้หญิง',
-                                                  style: GoogleFonts.notoSans(
+                                                  style: GoogleFonts.mali(
                                                     color: Colors.white70,
                                                     fontSize: 18.0,
                                                     fontWeight: FontWeight.bold,
@@ -355,7 +355,7 @@ class _ListMonthState extends State<ListMonth> {
                                             padding: const EdgeInsets.all(15.0),
                                             child: Text(
                                               '${accidentList.dead_femel} ราย',
-                                              style: GoogleFonts.notoSans(
+                                              style: GoogleFonts.mali(
                                                 color: Colors.white70,
                                                 fontSize: 18.0,
                                                 fontWeight: FontWeight.bold,

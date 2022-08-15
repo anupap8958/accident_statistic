@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
         return AlertDialog(
           title: Text(
             title,
-            style: GoogleFonts.notoSans(
+            style: GoogleFonts.mali(
               fontSize: 18.0,
               color: Colors.black,
               fontWeight: FontWeight.bold,
@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
           ),
           content: Text(
             msg,
-            style: GoogleFonts.notoSans(fontSize: 15.0, color: Colors.black),
+            style: GoogleFonts.mali(fontSize: 15.0, color: Colors.black),
           ),
           actions: [
             // ปุ่ม OK ใน dialog
@@ -83,14 +83,14 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text(
           'อุบัติเหตุบนทางพิเศษในประเทศไทย',
-          style: GoogleFonts.notoSans(fontWeight: FontWeight.bold),
+          style: GoogleFonts.mali(fontWeight: FontWeight.bold, fontSize: 16.0),
         ),
         backgroundColor: Color(0xFF1900b3),
       ),
       bottomNavigationBar: Container(
         color: Colors.red,
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(5.0),
           child: OutlinedButton(
             onPressed: () {
               Navigator.pushReplacementNamed(
@@ -107,7 +107,7 @@ class _HomePageState extends State<HomePage> {
             ),
             child: Text(
               'แสดงรายละเอียดแต่ละเดือน',
-              style: GoogleFonts.notoSans(color: Colors.white, fontSize: 18.0),
+              style: GoogleFonts.mali(color: Colors.white, fontSize: 18.0),
             ),
           ),
         ),
@@ -148,22 +148,34 @@ class _HomePageState extends State<HomePage> {
                   totalInjurMen += accidentList.injur_man;
                   totalInjurFemale += accidentList.injur_femel;
                 }
-                return Container(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      _buildHeader(),
-                      SizedBox(
-                        width: double.infinity,
-                        height: 20,
-                      ),
-                      _buildshowStatPanel(),
-                      SizedBox(
-                        width: double.infinity,
-                        height: 20,
-                      ),
-                      _buildInputPanel(),
-                    ],
+                return ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minHeight: double.infinity,
+                  ),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          width: double.infinity,
+                          height: 10,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: _buildHeader(),
+                        ),
+                        SizedBox(
+                          width: double.infinity,
+                          height: 10,
+                        ),
+                        _buildShowStatPanel(),
+                        SizedBox(
+                          width: double.infinity,
+                          height: 10,
+                        ),
+                        _buildInputPanel(),
+                      ],
+                    ),
                   ),
                 );
               }
@@ -194,7 +206,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget _buildInputPanel() {
     return Padding(
-      padding: const EdgeInsets.all(20.0),
+      padding: const EdgeInsets.all(10.0),
       child: Column(
         children: [
           Container(
@@ -246,10 +258,10 @@ class _HomePageState extends State<HomePage> {
                       var tempYear = int.parse(_controller.text);
                       if (tempYear < 2546) {
                         _showMaterialDialog('Warning',
-                            'จำนวนปีอยู่ในระหว่าง 2546 - 2564 โปรดลองใหม่อีกครั้ง');
-                      } else if (tempYear > 2564) {
+                            'กรุณาใส่จำนวนปีอยู่ในระหว่าง 2546 - ${_year} พ.ศ. โปรดลองใหม่อีกครั้ง');
+                      } else if (tempYear > 2565) {
                         _showMaterialDialog('Warning',
-                            'จำนวนปีอยู่ในระหว่าง 2546 - 2564 โปรดลองใหม่อีกครั้ง');
+                            'กรุณาใส่จำนวนปีอยู่ในระหว่าง 2546 - ${_year} พ.ศ. โปรดลองใหม่อีกครั้ง');
                       } else {
                         _year = _controller.text;
                         _accidentFuture = _fetch(_year);
@@ -265,7 +277,7 @@ class _HomePageState extends State<HomePage> {
                   },
                   child: Text(
                     '| ยืนยัน',
-                    style: GoogleFonts.notoSans(
+                    style: GoogleFonts.mali(
                       fontSize: 15,
                       color: Colors.black54,
                       fontWeight: FontWeight.bold,
@@ -279,7 +291,7 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.all(8.0),
             child: Text(
               '* ใส่ปี พ.ศ. ที่ต้องการ',
-              style: GoogleFonts.notoSans(
+              style: GoogleFonts.mali(
                 color: Colors.yellow.shade700,
                 fontSize: 13.0,
                 fontWeight: FontWeight.bold,
@@ -295,9 +307,22 @@ class _HomePageState extends State<HomePage> {
     return Center(
       child: Column(
         children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'อุบัติเหตุทางพิเศษ',
+                style: GoogleFonts.mali(
+                  color: Colors.white,
+                  fontSize: 26.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
           Text(
-            'อุบัติเหตุทางพิเศษในประเทศไทย',
-            style: GoogleFonts.notoSans(
+            'ในประเทศไทย',
+            style: GoogleFonts.mali(
               color: Colors.white,
               fontSize: 26.0,
               fontWeight: FontWeight.bold,
@@ -305,8 +330,8 @@ class _HomePageState extends State<HomePage> {
           ),
           Text(
             'ประจำปี : ${_year}',
-            style: GoogleFonts.notoSans(
-              color: Colors.white,
+            style: GoogleFonts.mali(
+              color: Colors.white70,
               fontSize: 20.0,
               fontWeight: FontWeight.bold,
             ),
@@ -316,11 +341,10 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _buildshowStatPanel() {
+  Widget _buildShowStatPanel() {
     return Card(
       clipBehavior: Clip.antiAliasWithSaveLayer,
-      margin: EdgeInsets.all(8.0),
-      elevation: 5.0,
+      margin: EdgeInsets.all(3.0),
       shadowColor: Colors.black.withOpacity(0.6),
       color: Colors.grey.withOpacity(0.6),
       child: Container(
@@ -344,16 +368,16 @@ class _HomePageState extends State<HomePage> {
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
                               'เกิดอุบัติเหตุ (ครั้ง)',
-                              style: GoogleFonts.notoSans(
+                              style: GoogleFonts.mali(
                                 color: Colors.black,
-                                fontSize: 20.0,
+                                fontSize: 19.0,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
                           ),
                           Text(
                             '${totalAccident}',
-                            style: GoogleFonts.notoSans(
+                            style: GoogleFonts.mali(
                               color: Color(0xFFff9d05),
                               fontSize: 30.0,
                               fontWeight: FontWeight.bold,
@@ -364,15 +388,13 @@ class _HomePageState extends State<HomePage> {
                     ),
                     Expanded(
                       child: Container(
-                        // height: 200,
-                        // width: 200,
                         color: Colors.yellow.shade700,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Text(
                               'บาดเจ็บ (คน)',
-                              style: GoogleFonts.notoSans(
+                              style: GoogleFonts.mali(
                                 color: Colors.black87,
                                 fontSize: 23.0,
                                 fontWeight: FontWeight.bold,
@@ -380,7 +402,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                             Text(
                               '${totalInjur}',
-                              style: GoogleFonts.notoSans(
+                              style: GoogleFonts.mali(
                                 color: Colors.indigo,
                                 fontSize: 30.0,
                                 fontWeight: FontWeight.bold,
@@ -394,7 +416,7 @@ class _HomePageState extends State<HomePage> {
                                       children: [
                                         Text(
                                           'ชาย',
-                                          style: GoogleFonts.notoSans(
+                                          style: GoogleFonts.mali(
                                             color: Colors.black87,
                                             fontSize: 23.0,
                                             fontWeight: FontWeight.bold,
@@ -402,7 +424,7 @@ class _HomePageState extends State<HomePage> {
                                         ),
                                         Text(
                                           '${totalInjurMen}',
-                                          style: GoogleFonts.notoSans(
+                                          style: GoogleFonts.mali(
                                             color: Colors.indigo,
                                             fontSize: 20.0,
                                             fontWeight: FontWeight.bold,
@@ -418,7 +440,7 @@ class _HomePageState extends State<HomePage> {
                                       children: [
                                         Text(
                                           'หญิง',
-                                          style: GoogleFonts.notoSans(
+                                          style: GoogleFonts.mali(
                                             color: Colors.black87,
                                             fontSize: 23.0,
                                             fontWeight: FontWeight.bold,
@@ -426,7 +448,7 @@ class _HomePageState extends State<HomePage> {
                                         ),
                                         Text(
                                           '${totalInjurFemale}',
-                                          style: GoogleFonts.notoSans(
+                                          style: GoogleFonts.mali(
                                             color: Colors.indigo,
                                             fontSize: 20.0,
                                             fontWeight: FontWeight.bold,
@@ -455,7 +477,7 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     Text(
                       'เสียชีวิต (ราย)',
-                      style: GoogleFonts.notoSans(
+                      style: GoogleFonts.mali(
                         color: Colors.black87,
                         fontSize: 23.0,
                         fontWeight: FontWeight.bold,
@@ -463,7 +485,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     Text(
                       '${totalDead}',
-                      style: GoogleFonts.notoSans(
+                      style: GoogleFonts.mali(
                         color: Color(0xFFff9d05),
                         fontSize: 48.0,
                         fontWeight: FontWeight.bold,
@@ -477,17 +499,17 @@ class _HomePageState extends State<HomePage> {
                               children: [
                                 Text(
                                   'ชาย',
-                                  style: GoogleFonts.notoSans(
+                                  style: GoogleFonts.mali(
                                     color: Colors.black87,
-                                    fontSize: 23.0,
+                                    fontSize: 28.0,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
                                 Text(
                                   '${totalDeadMen}',
-                                  style: GoogleFonts.notoSans(
+                                  style: GoogleFonts.mali(
                                     color: Color(0xFFff9d05),
-                                    fontSize: 20.0,
+                                    fontSize: 25.0,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -501,17 +523,17 @@ class _HomePageState extends State<HomePage> {
                               children: [
                                 Text(
                                   'หญิง',
-                                  style: GoogleFonts.notoSans(
+                                  style: GoogleFonts.mali(
                                     color: Colors.black87,
-                                    fontSize: 23.0,
+                                    fontSize: 28.0,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
                                 Text(
                                   '${totalDeadFemale}',
-                                  style: GoogleFonts.notoSans(
+                                  style: GoogleFonts.mali(
                                     color: Color(0xFFff9d05),
-                                    fontSize: 20.0,
+                                    fontSize: 25.0,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
