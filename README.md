@@ -3,7 +3,7 @@
 run project: flutter run --no-sound-null-safety
 
 
-## Run on flutter web
+## Setup run on flutter web
 
 1- Go to flutter\bin\cache and remove a file named: flutter_tools.stamp
 
