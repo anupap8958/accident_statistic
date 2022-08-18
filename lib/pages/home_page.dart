@@ -274,6 +274,7 @@ class _HomePageState extends State<HomePage> {
                       totalDeadMen = 0;
                       totalDeadFemale = 0;
                     }
+                    _controller.text = "";
                   });
                 },
                 child: Text(
