@@ -128,7 +128,7 @@ class _AccidentDetailState extends State<AccidentDetailMonth> {
                               ),
                               Row(
                                 mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceEvenly,
                                 children: [
                                   Card(
                                     color: Colors.yellow.shade700

@@ -173,7 +173,10 @@ class _HomePageState extends State<HomePage> {
                           width: double.infinity,
                           height: 10,
                         ),
-                        _buildInputPanel(),
+                        Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: _buildInputPanel(),
+                        ),
                       ],
                     ),
                   ),
@@ -205,101 +208,98 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildInputPanel() {
-    return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: Column(
-        children: [
-          Container(
-            width: 230.0,
-            decoration: BoxDecoration(
-              color: Colors.white70,
-              border: Border.all(width: 2.0),
-              borderRadius: BorderRadius.circular(10.0),
-            ),
-            child: Row(
-              children: [
-                Flexible(
-                  child: TextField(
-                    controller: _controller,
-                    keyboardType: TextInputType.number,
-                    style: const TextStyle(
+    return Column(
+      children: [
+        Container(
+          width: 230.0,
+          decoration: BoxDecoration(
+            color: Colors.white70,
+            border: Border.all(width: 2.0),
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+          child: Row(
+            children: [
+              Flexible(
+                child: TextField(
+                  controller: _controller,
+                  keyboardType: TextInputType.number,
+                  style: const TextStyle(
+                    fontFamily: 'PressStart2p',
+                    color: Colors.black54,
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  cursorColor: Colors.black,
+                  textAlign: TextAlign.center,
+                  decoration: InputDecoration(
+                    contentPadding: EdgeInsets.all(10.0),
+                    isDense: true,
+                    // กำหนดลักษณะเส้น border ของ TextField ในสถานะปกติ
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.white.withOpacity(0.5),
+                      ),
+                    ),
+                    // กำหนดลักษณะเส้น border ของ TextField เมื่อได้รับโฟกัส
+                    focusedBorder: const UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                    ),
+                    hintText: 'Enter here',
+                    hintStyle: TextStyle(
                       fontFamily: 'PressStart2p',
-                      color: Colors.black54,
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    cursorColor: Colors.black,
-                    textAlign: TextAlign.center,
-                    decoration: InputDecoration(
-                      contentPadding: EdgeInsets.all(10.0),
-                      isDense: true,
-                      // กำหนดลักษณะเส้น border ของ TextField ในสถานะปกติ
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.white.withOpacity(0.5),
-                        ),
-                      ),
-                      // กำหนดลักษณะเส้น border ของ TextField เมื่อได้รับโฟกัส
-                      focusedBorder: const UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white),
-                      ),
-                      hintText: 'Enter here',
-                      hintStyle: TextStyle(
-                        fontFamily: 'PressStart2p',
-                        color: Colors.white,
-                        fontSize: 15.0,
-                      ),
+                      color: Colors.white,
+                      fontSize: 15.0,
                     ),
                   ),
                 ),
-                TextButton(
-                  onPressed: () {
-                    setState(() {
-                      var tempYear = int.parse(_controller.text);
-                      if (tempYear < 2546) {
-                        _showMaterialDialog('Warning',
-                            'กรุณาใส่จำนวนปีอยู่ในระหว่าง 2546 - ${_year} พ.ศ. โปรดลองใหม่อีกครั้ง');
-                      } else if (tempYear > 2565) {
-                        _showMaterialDialog('Warning',
-                            'กรุณาใส่จำนวนปีอยู่ในระหว่าง 2546 - ${_year} พ.ศ. โปรดลองใหม่อีกครั้ง');
-                      } else {
-                        _year = _controller.text;
-                        _accidentFuture = _fetch(_year);
-                        totalAccident = 0;
-                        totalInjur = 0;
-                        totalInjurMen = 0;
-                        totalInjurFemale = 0;
-                        totalDead = 0;
-                        totalDeadMen = 0;
-                        totalDeadFemale = 0;
-                      }
-                    });
-                  },
-                  child: Text(
-                    '| ยืนยัน',
-                    style: GoogleFonts.mali(
-                      fontSize: 15,
-                      color: Colors.black54,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              '* ใส่ปี พ.ศ. ที่ต้องการ',
-              style: GoogleFonts.mali(
-                color: Colors.yellow.shade700,
-                fontSize: 13.0,
-                fontWeight: FontWeight.bold,
               ),
+              TextButton(
+                onPressed: () {
+                  setState(() {
+                    var tempYear = int.parse(_controller.text);
+                    if (tempYear < 2546) {
+                      _showMaterialDialog('Warning',
+                          'กรุณาใส่จำนวนปีอยู่ในระหว่าง 2546 - ${_year} พ.ศ. โปรดลองใหม่อีกครั้ง');
+                    } else if (tempYear > 2565) {
+                      _showMaterialDialog('Warning',
+                          'กรุณาใส่จำนวนปีอยู่ในระหว่าง 2546 - ${_year} พ.ศ. โปรดลองใหม่อีกครั้ง');
+                    } else {
+                      _year = _controller.text;
+                      _accidentFuture = _fetch(_year);
+                      totalAccident = 0;
+                      totalInjur = 0;
+                      totalInjurMen = 0;
+                      totalInjurFemale = 0;
+                      totalDead = 0;
+                      totalDeadMen = 0;
+                      totalDeadFemale = 0;
+                    }
+                  });
+                },
+                child: Text(
+                  '| ยืนยัน',
+                  style: GoogleFonts.mali(
+                    fontSize: 15,
+                    color: Colors.black54,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            '* ใส่ปี พ.ศ. ที่ต้องการ',
+            style: GoogleFonts.mali(
+              color: Colors.yellow.shade700,
+              fontSize: 13.0,
+              fontWeight: FontWeight.bold,
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 
