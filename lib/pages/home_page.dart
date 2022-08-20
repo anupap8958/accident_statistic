@@ -394,7 +394,7 @@ class _HomePageState extends State<HomePage> {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Text(
-                              'บาดเจ็บ (คน)',
+                              'บาดเจ็บ (ราย)',
                               style: GoogleFonts.mali(
                                 color: Colors.black87,
                                 fontSize: 23.0,
